@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { LogOut } from "lucide-react";
 import { useLogout, useSignerStatus } from "@account-kit/react";
-import Image from "next/image";
 
 export default function Header() {
   const { logout } = useLogout();
@@ -11,13 +10,9 @@ export default function Header() {
     <header className="border-b">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <div className="flex items-center gap-2">
-          <Image
-            src="/smart-wallets.svg"
-            alt="Smart Wallets"
-            width={200}
-            height={26}
-            className="h-6 w-auto"
-          />
+          <h1 className="text-xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
+            Seven Up Down
+          </h1>
         </div>
 
         {isConnected && (

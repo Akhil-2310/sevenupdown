@@ -2,10 +2,10 @@
 
 import { useSignerStatus } from "@account-kit/react";
 import UserInfoCard from "./components/user-info-card";
-import NftMintCard from "./components/nft-mint-card";
 import LoginCard from "./components/login-card";
 import Header from "./components/header";
 import LearnMore from "./components/learn-more";
+import SevenUpDownGame from "./components/sevenupdowngame";
 
 export default function Home() {
   const signerStatus = useSignerStatus();
@@ -16,12 +16,16 @@ export default function Home() {
       <div className="bg-bg-main bg-cover bg-center bg-no-repeat h-[calc(100vh-4rem)]">
         <main className="container mx-auto px-4 py-8 h-full">
           {signerStatus.isConnected ? (
-            <div className="grid gap-8 md:grid-cols-[1fr_2fr]">
-              <div className="flex flex-col gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 h-full">
+              {/* User Info Card - Left Side */}
+              <div className="lg:col-span-1 flex flex-col">
                 <UserInfoCard />
-                <LearnMore />
               </div>
-              <NftMintCard />
+              
+              {/* Game - Center/Right Side */}
+              <div className="lg:col-span-3 flex items-center justify-center">
+                <SevenUpDownGame />
+              </div>
             </div>
           ) : (
             <div className="flex justify-center items-center h-full pb-[4rem]">
