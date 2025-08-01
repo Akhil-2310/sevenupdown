@@ -31,12 +31,12 @@ export default function LoginPage() {
             "dark:from-white dark:to-gray-300 bg-clip-text text-transparent"
           )}
         >
-          Smart Wallets
+          Seven Up Down
         </CardTitle>
         <CardDescription
           className={cn("text-base text-gray-600 dark:text-gray-400")}
         >
-          Experience seamless onchain UX with smart wallets. Click log in to
+          Play the classic dice game on-chain powered by Alchemy Smart Wallets. Bet on dice sums and win big! Click log in to
           continue.
         </CardDescription>
       </CardHeader>

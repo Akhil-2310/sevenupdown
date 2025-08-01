@@ -32,12 +32,6 @@ export default function UserInfo() {
 
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>User Profile</CardTitle>
-        <CardDescription>
-          Your users are always in control of their non-custodial smart wallet.
-        </CardDescription>
-      </CardHeader>
       <CardContent className="space-y-4">
         <div>
           <p className="text-sm font-medium text-muted-foreground mb-1">
