@@ -36,7 +36,7 @@ export default function LoginPage() {
         <CardDescription
           className={cn("text-base text-gray-600 dark:text-gray-400")}
         >
-          Play the classic dice game on-chain powered by Alchemy Smart Wallets. Bet on dice sums and win big! Click log in to
+          Play the classic dice game onchain powered by Alchemy Smart Wallets. Bet on dice sums and win big! Click log in to
           continue.
         </CardDescription>
       </CardHeader>
