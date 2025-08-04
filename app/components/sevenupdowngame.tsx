@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import { Dice1, Dice2, Dice3, Dice4, Dice5, Dice6, Coins, TrendingUp, TrendingDown, Target } from "lucide-react"
 import { useSmartAccountClient, useSendUserOperation } from "@account-kit/react"
 import { createPlaceBetUserOp, createResolveBetUserOp, getBetData, getTransactionUrl } from "@/lib/gameContract"
@@ -88,13 +88,6 @@ export default function SevenUpSevenDown() {
     },
   })
 
-  // Load current bet from contract
-  useEffect(() => {
-    if (client?.account?.address) {
-      loadBetData()
-    }
-  }, [client?.account?.address])
-
   // Cleanup interval on unmount
   useEffect(() => {
     return () => {
@@ -104,7 +97,7 @@ export default function SevenUpSevenDown() {
     }
   }, [rollInterval])
 
-  const loadBetData = async () => {
+  const loadBetData = useCallback(async () => {
     if (!client?.account?.address) return
     
     console.log("Loading bet data for:", client.account.address)
@@ -146,7 +139,14 @@ export default function SevenUpSevenDown() {
     } catch (err) {
       console.error("Failed to load bet data:", err)
     }
-  }
+  }, [client])
+
+  // Load current bet from contract
+  useEffect(() => {
+    if (client?.account?.address) {
+      loadBetData()
+    }
+  }, [client?.account?.address, loadBetData])
 
   const diceSum = dice1 + dice2
 
@@ -297,7 +297,7 @@ export default function SevenUpSevenDown() {
                 {currentBet.option === GameOptions.Down ? "Under 7" : 
                  currentBet.option === GameOptions.Seven ? "Exactly 7" : "Over 7"}
               </p>
-              <p className="text-xs text-blue-600 mt-1">Click "Roll Dice!" to resolve</p>
+              <p className="text-xs text-blue-600 mt-1">Click &quot;Roll Dice!&quot; to resolve</p>
             </div>
           )}
 
